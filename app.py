@@ -50,7 +50,7 @@ def insert_data_into_dynamodb(data):
 def get_access():
     dynamodb = boto3.resource('dynamodb')
     table = dynamodb.Table(DYNAMODB_TABLE_NAME)
-    try:    
+    try:
         items = table.scan()['Items']
         sorted_items = sorted(items, key=lambda x: x['access_time'])
         return sorted_items
